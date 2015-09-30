@@ -86,15 +86,13 @@ class PaperTrailManager::ChangesController
     if @result
       if @version.event == "create"
         flash[:notice] = "Rolled back newly-created record by destroying it."
-        redirect_to changes_path
       else
         flash[:notice] = "Rolled back changes to this record."
-        redirect_to change_item_url(@version)
       end
     else
       flash[:error] = "Couldn't rollback. Sorry."
-      redirect_to changes_path
     end
+    redirect_to changes_path
   end
 
 protected
